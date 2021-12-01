@@ -1,0 +1,17 @@
+flamegraph([
+{"x":0,"y":0,"width":15625,"frame_id":70143942271100,"frame":"<main>","file":"flamegraph.rb"}
+,{"x":15625,"y":0,"width":593,"frame_id":1,"frame":"(garbage collection)","file":""}
+,{"x":16223,"y":0,"width":1,"frame_id":70143942271100,"frame":"<main>","file":"flamegraph.rb"}
+,{"x":0,"y":1,"width":15625,"frame_id":70143682143720,"frame":"<main>","file":"/Users/mikhailpo/work/tt-core/flamegraphs_hands_on/flamegraph.rb"}
+,{"x":16223,"y":1,"width":1,"frame_id":70143682143720,"frame":"<main>","file":"/Users/mikhailpo/work/tt-core/flamegraphs_hands_on/flamegraph.rb"}
+,{"x":0,"y":2,"width":15625,"frame_id":70143682162720,"frame":"Object#flamegraph","file":"/Users/mikhailpo/work/tt-core/flamegraphs_hands_on/flamegraph.rb"}
+,{"x":16223,"y":2,"width":1,"frame_id":70143682162720,"frame":"Object#flamegraph","file":"/Users/mikhailpo/work/tt-core/flamegraphs_hands_on/flamegraph.rb"}
+,{"x":0,"y":3,"width":15625,"frame_id":70143682162720,"frame":"Object#flamegraph","file":"/Users/mikhailpo/work/tt-core/flamegraphs_hands_on/flamegraph.rb"}
+,{"x":16223,"y":3,"width":1,"frame_id":70143682162720,"frame":"Object#flamegraph","file":"/Users/mikhailpo/work/tt-core/flamegraphs_hands_on/flamegraph.rb"}
+,{"x":0,"y":4,"width":15625,"frame_id":70143682164400,"frame":"block in <main>","file":"/Users/mikhailpo/work/tt-core/flamegraphs_hands_on/flamegraph.rb"}
+,{"x":16223,"y":4,"width":1,"frame_id":70143682164400,"frame":"block in <main>","file":"/Users/mikhailpo/work/tt-core/flamegraphs_hands_on/flamegraph.rb"}
+,{"x":0,"y":5,"width":15625,"frame_id":70143682162540,"frame":"Object#a","file":"/Users/mikhailpo/work/tt-core/flamegraphs_hands_on/flamegraph.rb"}
+,{"x":16223,"y":5,"width":1,"frame_id":70143682162540,"frame":"Object#a","file":"/Users/mikhailpo/work/tt-core/flamegraphs_hands_on/flamegraph.rb"}
+,{"x":2231,"y":6,"width":5370,"frame_id":70143682162480,"frame":"Object#b","file":"/Users/mikhailpo/work/tt-core/flamegraphs_hands_on/flamegraph.rb"}
+,{"x":7602,"y":6,"width":8023,"frame_id":70143682162240,"frame":"Object#c","file":"/Users/mikhailpo/work/tt-core/flamegraphs_hands_on/flamegraph.rb"}
+])
