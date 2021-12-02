@@ -16,6 +16,11 @@ def calc(scale)
   Array.new(scale * 100000) { |i| i }.shuffle.sort
 end
 
+def memoizable_calc(scale)
+  @cache ||= {}
+  @cache[scale] ||= calc(scale)
+end
+
 class AD
   def initialize
     @eh = EH.new
@@ -72,7 +77,6 @@ class EH
     10.times { calc(1) }
   end
 end
-
 
 class IL
   def i
