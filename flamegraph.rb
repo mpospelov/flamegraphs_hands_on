@@ -1,33 +1,38 @@
+# frozen_string_literal: true
+
 require 'stackprof'
 
-def flamegraph # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-  flamegraph_file_path = 'flamegraph.txt'
-  report = StackProf.run(mode: :cpu, interval: 500, ignore_gc: true, raw: true) do
-    yield
-  end
+# collects flamegraph for given block
+def flamegraph(&block)
+  report = StackProf.run(mode: :cpu, interval: 500, ignore_gc: true, raw: true, &block)
 
-  File.open(flamegraph_file_path, 'w') do |file|
+  File.open('flamegraph.txt', 'w') do |file|
     StackProf::Report.new(report).print_timeline_flamegraph(file)
   end
+
   puts 'Open in browser:'
-  system("stackprof --flamegraph-viewer=#{flamegraph_file_path}")
+  system('stackprof --flamegraph-viewer=flamegraph.txt')
 end
 
+# costly operation, bigger scale costly it is
 def calc(scale)
-  Array.new(scale * 100000) { |i| i }.shuffle.sort
+  Array.new(scale * 100_000) { |i| i }.shuffle.sort
 end
 
+# costly operation with memoization
+def memoizable_calc(scale)
+  @cache ||= {}
+  @cache[scale] ||= calc(scale)
+end
+
+# network call, good candidate for batching
 require 'net/http'
 def net_call(*queries)
   uri = URI("https://www.google.com/search?q=#{queries.join(' and ')}")
   Net::HTTP.get(uri) # => String
 end
 
-def memoizable_calc(scale)
-  @cache ||= {}
-  @cache[scale] ||= calc(scale)
-end
-
+# :nodoc:
 class AD
   def initialize
     @eh = EH.new
@@ -57,6 +62,7 @@ class AD
   end
 end
 
+# :nodoc:
 class EH
   def initialize
     @il = IL.new
@@ -85,6 +91,7 @@ class EH
   end
 end
 
+# :nodoc:
 class IL
   def initialize
     @mp = MP.new
@@ -113,6 +120,7 @@ class IL
   end
 end
 
+# :nodoc:
 class MP
   def m
     net_call('a')
@@ -133,9 +141,13 @@ class MP
   end
 end
 
-puts 'Started'
-puts Time.now
+def launch
+  puts 'Started'
+  puts Time.now
 
-flamegraph do
-  AD.new.a
+  flamegraph do
+    AD.new.a
+  end
 end
+
+launch
