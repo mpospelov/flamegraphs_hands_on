@@ -18,7 +18,7 @@ require_relative 'calc'
 require_relative 'ad'
 require_relative 'eh'
 require_relative 'il'
-require_relative 'mp'
+require_relative 'mp' # < - this is our responsibility
 
 def launch
   puts 'Started'

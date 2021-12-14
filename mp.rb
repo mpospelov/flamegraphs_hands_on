@@ -1,6 +1,6 @@
 
 # :nodoc:
-class MP
+class MP # < - this is our responsibility
   def m
     Calc.net_call('a')
     5.times { Calc.net_call('b') }
